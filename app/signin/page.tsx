@@ -21,7 +21,7 @@ export default function SignInPage() {
 
     useEffect(() => {
         if (session) {
-            router.push("/dashboard");
+            router.push("/hospitals");
         }
     }, [session, router]);
 
@@ -39,7 +39,7 @@ export default function SignInPage() {
                 toast.error(error.message || "Failed to sign in");
             } else {
                 toast.success("Signed in successfully!");
-                router.push("/dashboard");
+                router.push("/hospitals");
             }
         } catch (err) {
             toast.error("An unexpected error occurred");
@@ -53,7 +53,7 @@ export default function SignInPage() {
         try {
             await authClient.signIn.social({
                 provider,
-                callbackURL: "/dashboard"
+                callbackURL: "/hospitals"
             });
         } catch (err) {
             toast.error(`Failed to sign in with ${provider}`);
@@ -70,11 +70,12 @@ export default function SignInPage() {
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-muted/40 px-4">
-            <Card className="w-full max-w-md shadow-lg border-t-4 border-t-primary">
-                <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl font-bold text-center">Arogya Assam</CardTitle>
-                    <CardDescription className="text-center">
+        <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gradient-to-b from-sky-200 via-sky-100 to-white">
+            <Card className="w-full max-w-sm p-6 rounded-2xl bg-white/70 backdrop-blur-xl shadow-xl border border-white/40">
+                <CardHeader className="space-y-2 text-center">
+                    
+                    <CardTitle className="text-3xl font-semibold tracking-tight">FinVeda</CardTitle>
+                    <CardDescription className="text-sm text-gray-500 max-w-xs mx-auto">
                         Enter your credentials to access your patient dashboard
                     </CardDescription>
                 </CardHeader>
@@ -83,6 +84,7 @@ export default function SignInPage() {
                         <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
                             <Input 
+                                className="h-11 rounded-lg bg-gray-100 border-none focus-visible:ring-2 focus-visible:ring-blue-400"
                                 id="email" 
                                 type="email" 
                                 placeholder="name@example.com" 
@@ -102,6 +104,7 @@ export default function SignInPage() {
                                 </Link>
                             </div>
                             <Input 
+                            className="h-11 rounded-lg bg-gray-100 border-none focus-visible:ring-2 focus-visible:ring-blue-400"
                                 id="password" 
                                 type="password" 
                                 value={password}
@@ -109,7 +112,7 @@ export default function SignInPage() {
                                 required 
                             />
                         </div>
-                        <Button type="submit" className="w-full" disabled={loading}>
+                        <Button type="submit" className="w-full h-11 rounded-lg bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:opacity-90 transition" disabled={loading}>
                             {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                             Sign In
                         </Button>
@@ -120,7 +123,7 @@ export default function SignInPage() {
                             <span className="w-full border-t" />
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-background px-2 text-muted-foreground">
+                            <span className="bg-white px-4 text-xs uppercase tracking-wider text-gray-400">
                                 Or continue with
                             </span>
                         </div>
@@ -128,6 +131,7 @@ export default function SignInPage() {
 
                     <div className="grid grid-cols-2 gap-4">
                         <Button 
+                            className="h-10 rounded-lg bg-white hover:bg-gray-50 border border-gray-200"
                             variant="outline" 
                             onClick={() => handleSocialSignIn("google")}
                             disabled={loading}
@@ -136,6 +140,7 @@ export default function SignInPage() {
                             Google
                         </Button>
                         <Button 
+                            className="h-10 rounded-lg bg-white hover:bg-gray-50 border border-gray-200"
                             variant="outline" 
                             onClick={() => handleSocialSignIn("github")}
                             disabled={loading}
@@ -145,7 +150,7 @@ export default function SignInPage() {
                         </Button>
                     </div>
                 </CardContent>
-                <CardFooter className="flex flex-wrap items-center justify-center gap-1 border-t bg-muted/50 py-4 text-sm">
+                <CardFooter className="flex flex-wrap items-center justify-center gap-1 border-t py-4 text-sm text-gray-500">
                     <span className="text-muted-foreground">Don&apos;t have an account?</span>
                     <Link href="/signup" className="font-medium text-primary hover:underline">
                         Create an Account
