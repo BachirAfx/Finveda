@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useRef } from "react";
 
 function useScrollReveal(threshold = 0.15) {
@@ -86,7 +87,7 @@ function SIPMockup() {
       </div>
       <div className="flex items-end gap-1 h-28">
         {months.map((m, i) => (
-          <div key={m} className="flex-1 flex flex-col items-center gap-0.5">
+          <div key={i} className="flex-1 flex flex-col items-center gap-0.5">
             <div className="w-full flex flex-col justify-end gap-px" style={{ height: 96 }}>
               <div
                 className="w-full rounded-sm bg-[#C9A84C] opacity-40 rounded-t-sm"
@@ -104,8 +105,8 @@ function SIPMockup() {
         ))}
       </div>
       <div className="flex gap-1 mt-2">
-        {months.map((m) => (
-          <div key={m} className="flex-1 text-center text-[9px] text-[#bbb]">{m}</div>
+        {months.map((m,i) => (
+          <div key={`${m}-${i}`} className="flex-1 text-center text-[9px] text-[#bbb]">{m}</div>
         ))}
       </div>
       <div className="mt-4 flex gap-4 text-[12px] text-[#888]">
