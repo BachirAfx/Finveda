@@ -1,4 +1,5 @@
-import { useScrollReveal } from "../hooks/useScrollReveal";
+"use client"
+import { useScrollReveal } from "@/hooks/useScroeRevel";
 import { useRef, useEffect } from "react";
 
 const STEPS = [

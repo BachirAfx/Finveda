@@ -1,4 +1,5 @@
-import { useScrollReveal } from "../hooks/useScrollReveal";
+"use client"
+import { useScrollReveal } from "@/hooks/useScroeRevel";
 
 const BOOKS = [
   {

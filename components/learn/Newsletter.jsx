@@ -1,5 +1,6 @@
+"use client"
 import { useState } from "react";
-import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useScrollReveal } from "@/hooks/useScroeRevel";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");

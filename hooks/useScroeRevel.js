@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useRef } from "react";
 
 export function useScrollReveal(delay = 0, threshold = 0.12) {
